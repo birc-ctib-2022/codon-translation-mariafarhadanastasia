@@ -42,7 +42,8 @@ def split_codons(dna: str) -> list[str] | None:
     for codon in codons:
         if len(codon)!=3:
             return None
-    return [codons]
+    return codons
+
 
 def translate_codons(codons: list[str]) -> list[str]:
     """Translate a list of codons (triplets) into their corresponding
