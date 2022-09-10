@@ -1,3 +1,6 @@
+
+
+
 """Module for translating DNA to proteins via codons."""
 
 CODON_MAP = {'TTT': 'F', 'TTC': 'F', 'TTA': 'L', 'TTG': 'L',
@@ -60,8 +63,15 @@ def translate_codons(codons: list[str]) -> list[str]:
     True
 
     """
-    # FIXME: Implement the function
-    return []
+    codons= [codon.upper() for codon in codons]
+    z=[]
+    for codon in codons:
+        if codon not in CODON_MAP.keys():
+            return('None')
+        else:
+            tc=(CODON_MAP[codon])
+            z.append(tc)
+    print(list(z))
 
 
 def translate_dna(dna: str) -> str:
