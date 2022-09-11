@@ -97,4 +97,11 @@ def translate_dna(dna: str) -> str:
 
     """
     # FIXME: Implement the function
-    return ""
+
+    splitted_dna = split_codons(dna)
+
+    if len(splitted_dna[-1:]) == 3:
+        translated_codons = translate_codons(splitted_dna)
+        print(*translated_codons, sep='')
+    else:
+        return None
