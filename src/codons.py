@@ -40,11 +40,10 @@ def split_codons(dna: str) -> list[str] | None:
     """
     # FIXME: Implement the function
     codons = []
+    if len(dna) % 3 !=0:
+        return None
     for s in range(0,len(dna),3):
         codons.append(dna[s:s+3])
-    for codon in codons:
-        if len(codon)!=3:
-            return None
     return codons
 
 
