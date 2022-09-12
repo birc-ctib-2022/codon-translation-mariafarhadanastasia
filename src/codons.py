@@ -47,7 +47,6 @@ def split_codons(dna: str) -> list[str] | None:
             return None
     return codons
 
-
 def translate_codons(codons: list[str]) -> list[str]:
     """Translate a list of codons (triplets) into their corresponding
     amino acid sequence.
@@ -77,8 +76,8 @@ def translate_codons(codons: list[str]) -> list[str]:
         else:
             tc=(CODON_MAP[codon])
             z.append(tc)
-    print(list(z))
-
+            list_z=list(z)
+    return list_z
 
 def translate_dna(dna: str) -> str:
     """Translate a DNA string into its corresponding amino acid string.
