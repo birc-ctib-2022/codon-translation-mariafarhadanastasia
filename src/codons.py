@@ -101,6 +101,11 @@ def translate_dna(dna: str) -> str:
 
     if len(splitted_dna[-1:]) == 3:
         translated_codons = translate_codons(splitted_dna)
-        print(*translated_codons, sep='')
+
+        protein = ''
+        for amino in translate_codons:
+            protein += amino
+
+        return protein
     else:
         return None
