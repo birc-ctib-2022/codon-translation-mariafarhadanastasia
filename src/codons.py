@@ -75,7 +75,7 @@ def translate_codons(codons: list[str]) -> list[str]:
         else:
             tc=(CODON_MAP[codon])
             z.append(tc)
-    print(z)
+
     return z
 
 
@@ -98,14 +98,19 @@ def translate_dna(dna: str) -> str:
     # FIXME: Implement the function
 
     splitted_dna = split_codons(dna)
-
-    if len(splitted_dna[-1:]) == 3:
-        translated_codons = translate_codons(splitted_dna)
-
-        protein = ''
-        for amino in translate_codons:
-            protein += amino
-
-        return protein
-    else:
+    
+    # Handle None in split_codons
+    if splitted_dna == None:
         return None
+    else: # If split_codons return triplets list
+        translated_codons = translate_codons(splitted_dna)
+        
+        # Handle None in translate_codons 
+        if translated_codons == None:
+            return None
+        else: # If translate_codons return amino acids list
+            protein = ''
+            for amino in translated_codons:
+                protein += amino
+
+            return protein
