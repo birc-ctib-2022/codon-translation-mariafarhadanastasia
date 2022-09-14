@@ -69,7 +69,7 @@ def translate_codons(codons: list[str]) -> list[str]:
     """
     codons= [codon.upper() for codon in codons]
     z=[]
-     for codon in codons:
+    for codon in codons:
         if codon not in CODON_MAP.keys():
             return None
         else:
