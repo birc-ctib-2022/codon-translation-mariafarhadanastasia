@@ -69,14 +69,15 @@ def translate_codons(codons: list[str]) -> list[str]:
     """
     codons= [codon.upper() for codon in codons]
     z=[]
-    for codon in codons:
+     for codon in codons:
         if codon not in CODON_MAP.keys():
-            return('None')
+            return None
         else:
             tc=(CODON_MAP[codon])
             z.append(tc)
-            list_z=list(z)
-    return list_z
+    print(z)
+    return z
+
 
 def translate_dna(dna: str) -> str:
     """Translate a DNA string into its corresponding amino acid string.
