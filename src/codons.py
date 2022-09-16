@@ -96,8 +96,12 @@ def translate_dna(dna: str) -> str:
 
     """
     # FIXME: Implement the function
-
-    splitted_dna = split_codons(dna)
+    
+    # Handle empty dna
+    if dna == '':
+        return('')
+    else:
+        splitted_dna = split_codons(dna)
     
     # Handle None in split_codons
     if splitted_dna == None:
