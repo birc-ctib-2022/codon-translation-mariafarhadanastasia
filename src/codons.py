@@ -1,3 +1,6 @@
+
+
+
 """Module for translating DNA to proteins via codons."""
 
 CODON_MAP = {'TTT': 'F', 'TTC': 'F', 'TTA': 'L', 'TTG': 'L',
@@ -36,8 +39,12 @@ def split_codons(dna: str) -> list[str] | None:
 
     """
     # FIXME: Implement the function
-    return []
-
+    codons = []
+    if len(dna) % 3 !=0:
+        return None
+    for s in range(0,len(dna),3):
+        codons.append(dna[s:s+3])
+    return codons
 
 def translate_codons(codons: list[str]) -> list[str]:
     """Translate a list of codons (triplets) into their corresponding
@@ -60,8 +67,16 @@ def translate_codons(codons: list[str]) -> list[str]:
     True
 
     """
-    # FIXME: Implement the function
-    return []
+    codons= [codon.upper() for codon in codons]
+    z=[]
+    for codon in codons:
+        if codon not in CODON_MAP.keys():
+            return None
+        else:
+            tc=(CODON_MAP[codon])
+            z.append(tc)
+
+    return z
 
 
 def translate_dna(dna: str) -> str:
@@ -81,4 +96,25 @@ def translate_dna(dna: str) -> str:
 
     """
     # FIXME: Implement the function
-    return ""
+    
+    # Handle empty dna
+    if dna == '':
+        return('')
+    else:
+        splitted_dna = split_codons(dna)
+    
+    # Handle None in split_codons
+    if splitted_dna == None:
+        return None
+    else: # If split_codons return triplets list
+        translated_codons = translate_codons(splitted_dna)
+        
+        # Handle None in translate_codons 
+        if translated_codons == None:
+            return None
+        else: # If translate_codons return amino acids list
+            protein = ''
+            for amino in translated_codons:
+                protein += amino
+
+            return protein
